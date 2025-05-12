@@ -37,6 +37,15 @@ def search():
     query = request.args.get('q', 'Keine Suchanfrage')
     sort_by = request.args.get('sort', 'Standardsortierung')
     return f"Suche nach: {query}, Sortierung: {sort_by}"
+
+@app.route("/products")
+def products():
+    category = request.args.get('category', 'Zeige alle Produkte')
+    #if struktur um die returnvalues spezifischer zu benennen (einfach nur zum ausprobieren^^)
+    if category != 'Zeige alle Produkte':
+        return f"Zeige Produkte aus der Kategorie: {category}"
+    else:
+        return f"{category}"
     
 # http://127.0.0.1:5000/search?s=python&sort=relevance
 if __name__ == "__main__":
